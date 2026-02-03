@@ -1,0 +1,24 @@
+{
+  "name": "hacknovation-project",
+  "version": "1.0.0",
+  "description": "Ai project",
+  "license": "ISC",
+  "author": "Ashad and Ansh",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@langchain/community": "^0.3.15",
+    "@langchain/core": "^0.3.80",
+    "@xenova/transformers": "^2.17.2",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "faiss-node": "^0.5.1",
+    "groq-sdk": "^0.37.0",
+    "pdf-parse": "^1.1.4",
+    "uuid": "^13.0.0"
+  }
+}
