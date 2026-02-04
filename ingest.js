@@ -20,16 +20,16 @@ export async function ingestSyllabus() {
       console.error(" No PDF files found inside data folder");
       return;
     }
-    console.log(`📄 Found ${pdfFiles.length} PDF(s)`);
+    console.log(`Found ${pdfFiles.length} PDF(s)`);
     const documents = [];
     for (const file of pdfFiles) {
       const filePath = path.join(DATA_FOLDER, file);
-      console.log(`📘 Reading: ${file}`);
+      console.log(`Reading: ${file}`);
       try {
         const buffer = fs.readFileSync(filePath);
         const parsed = await pdf(buffer);
         if (!parsed.text || parsed.text.trim().length === 0) {
-          console.warn(`⚠️ No readable text in ${file}`);
+          console.warn(` No readable text in ${file}`);
           continue;
         }
         documents.push({
@@ -44,11 +44,11 @@ export async function ingestSyllabus() {
       console.error(" No valid content extracted from PDFs");
       return;
     }
-    console.log("🧠 Creating embeddings...");
+    console.log("Creating embeddings...");
     const embeddings = new HuggingFaceTransformersEmbeddings({
       modelName: "Xenova/all-MiniLM-L6-v2"
     });
-    console.log("📦 Building FAISS Vector DB...");
+    console.log("Building FAISS Vector DB...");
     const vectorStore = await FaissStore.fromDocuments(
       documents,
       embeddings
